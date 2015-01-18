@@ -17,8 +17,14 @@
 if(florianwolters_include_included)
   return()
 endif()
-
 set(florianwolters_include_included 1)
+
+# ------------------------------------------------------------------------------
+# Initialize project.
+# ------------------------------------------------------------------------------
+
+set(PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+project(${PROJECT_NAME} VERSION ${PROJECT_VERSION} LANGUAGES CXX C)
 
 # ------------------------------------------------------------------------------
 # Load and run "CMake" code from a file or module.
@@ -32,6 +38,7 @@ include(ExternalProject)
 
 include("${CMAKE_CURRENT_LIST_DIR}/SetCommonVariables.cmake")
 include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/CMake.cmake")
+include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/Debug.cmake")
 include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/Cppcheck.cmake")
 include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/Doxygen.cmake")
 include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/Flawfinder.cmake")
@@ -46,15 +53,6 @@ assert_out_of_source_build()
 
 option(BUILD_TESTS "Build the test executables of the project." ON)
 option(BUILD_EXAMPLES "Build the example executables of the project." ON)
-
-# ------------------------------------------------------------------------------
-# Initialize project.
-# ------------------------------------------------------------------------------
-
-
-set(PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
-
-project(${PROJECT_NAME} VERSION ${PROJECT_VERSION} LANGUAGES CXX C)
 
 # ------------------------------------------------------------------------------
 # Build tests.
