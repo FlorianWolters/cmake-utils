@@ -1,4 +1,6 @@
-# distclean_target.cmake
+#.rst:
+# distclean_target
+# ----------------
 #
 # Internal helper file required for the function `add_distclean_target`.
 #

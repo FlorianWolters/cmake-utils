@@ -1,4 +1,6 @@
-# FindCppcheck.cmake
+#.rst:
+# FindCppcheck
+# ------------
 #
 # Finds the static code analyzer "Cppcheck" with the build system "CMake".
 #

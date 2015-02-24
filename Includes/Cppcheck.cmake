@@ -1,4 +1,6 @@
-# Cppcheck.cmake
+#.rst:
+# Cppcheck
+# --------
 #
 # Allows to run the static code analyzer "Cppcheck" as a custom target and with
 # the build system "CMake".
@@ -14,13 +16,15 @@
 # Distributed under the Boost Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-# Start of include guard.
+# ------------------------------------------------------------------------------
+# Include guard.
+# ------------------------------------------------------------------------------
+
 if(florianwolters_cppcheck_included)
   return()
 endif()
 
-set(florianwolters_cppcheck_included TRUE)
-# End of include guard.
+set(florianwolters_cppcheck_included 1)
 
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 

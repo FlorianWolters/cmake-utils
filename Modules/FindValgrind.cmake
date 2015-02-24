@@ -1,4 +1,6 @@
-# FindValgrind.cmake
+#.rst:
+# FindValgrind
+# ------------
 #
 # Finds the profiler and memory debugger "Valgrind" with the build system
 # "CMake".
@@ -23,13 +25,14 @@
 # Distributed under the Boost Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-# Start of include guard.
+# ------------------------------------------------------------------------------
+# Include guard.
+# ------------------------------------------------------------------------------
+
 if(florianwolters_find_valgrind_included)
   return()
 endif()
-
-set(florianwolters_find_valgrind_included TRUE)
-# End of include guard.
+set(florianwolters_find_valgrind_included 1)
 
 cmake_minimum_required(VERSION 2.6.2 FATAL_ERROR)
 

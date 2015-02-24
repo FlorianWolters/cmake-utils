@@ -1,4 +1,6 @@
-# FindFlawfinder.cmake
+#.rst:
+# FindFlawfinder
+# --------------
 #
 # Finds the static code analyzer "Flawfinder" with the build system "CMake".
 #

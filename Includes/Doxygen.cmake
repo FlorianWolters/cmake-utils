@@ -1,4 +1,6 @@
-# Doxygen.cmake
+#.rst:
+# Doxygen
+# -------
 #
 # Allows to run the documentation generator "Doxygen" as a custom target with
 # the build system "CMake".
@@ -10,13 +12,15 @@
 # Distributed under the Boost Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-# Start of include guard.
+# ------------------------------------------------------------------------------
+# Include guard.
+# ------------------------------------------------------------------------------
+
 if(florianwolters_doxygen_included)
   return()
 endif()
 
-set(florianwolters_doxygen_included TRUE)
-# End of include guard.
+set(florianwolters_doxygen_included 1)
 
 function(enable_doxygen)
   set(DOXYGEN_BASENAME "doxygen")

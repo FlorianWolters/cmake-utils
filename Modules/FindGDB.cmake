@@ -1,4 +1,6 @@
-# FindGDB.cmake
+#.rst:
+# FindGDB
+# -------
 #
 # Finds the "GNU Debugger (GDB)" with the build system "CMake".
 #

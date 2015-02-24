@@ -1,4 +1,6 @@
-# GoogleTest.cmake
+#.rst:
+# GoogleTest
+# ----------
 #
 # Defines functions related to the C++ testing framework "Google Test (GTest)"
 # for build system "CMake".
@@ -10,11 +12,15 @@
 # Distributed under the Boost Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
+# ------------------------------------------------------------------------------
+# Include guard.
+# ------------------------------------------------------------------------------
+
 if(florianwolters_google_test_included)
   return()
 endif()
 
-set(florianwolters_google_test_included TRUE)
+set(florianwolters_google_test_included 1)
 
 # Downloads, configures and builds the test framework "Google Test".
 #
