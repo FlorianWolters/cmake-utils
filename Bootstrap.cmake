@@ -1,4 +1,6 @@
-# Bootstrap.cmake
+#.rst:
+# Bootstrap
+# ---------
 #
 # Bootstrapping of the project "florianwolters/cmake-utils" for the build system
 # "CMake".
@@ -14,16 +16,30 @@
 # Include guard.
 # ------------------------------------------------------------------------------
 
-if(florianwolters_include_included)
+if(florianwolters_bootstrap_included)
   return()
 endif()
-set(florianwolters_include_included 1)
+
+set(florianwolters_bootstrap_included 1)
 
 # ------------------------------------------------------------------------------
 # Initialize project.
 # ------------------------------------------------------------------------------
 
-set(PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+if(NOT PROJECT_VERSION_MAJOR)
+  set(PROJECT_VERSION_MAJOR 0)
+endif()
+
+if(NOT PROJECT_VERSION_MINOR)
+  set(PROJECT_VERSION_MINOR 1)
+endif()
+
+if(NOT PROJECT_VERSION_PATCH)
+  set(PROJECT_VERSION_PATCH 0)
+endif()
+
+set(PROJECT_VERSION
+    "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
 project(${PROJECT_NAME} VERSION ${PROJECT_VERSION} LANGUAGES CXX C)
 
 # ------------------------------------------------------------------------------
@@ -37,8 +53,12 @@ include(ExternalProject)
 # ------------------------------------------------------------------------------
 
 include("${CMAKE_CURRENT_LIST_DIR}/SetCommonVariables.cmake")
+include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/Assert.cmake")
 include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/CMake.cmake")
 include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/Debug.cmake")
+include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/List.cmake")
+include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/Variable.cmake")
+
 include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/Cppcheck.cmake")
 include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/Doxygen.cmake")
 include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/Flawfinder.cmake")
@@ -46,6 +66,7 @@ include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/GoogleCpplint.cmake")
 include("${PROJECT_CMAKE_INCLUDES_SOURCE_DIR}/GoogleTest.cmake")
 
 assert_out_of_source_build()
+add_check_target()
 
 # ------------------------------------------------------------------------------
 # Provide options that the user can optionally select.
@@ -100,6 +121,7 @@ if(BUILD_TESTS)
     endif()
 
     add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+    add_dependencies("check" ${TEST_NAME})
   endforeach()
 endif()
 

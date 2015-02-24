@@ -1,4 +1,6 @@
-# SetCommonVariables.cmake
+#.rst:
+# SetCommonVariables
+# ------------------
 #
 # Sets common variables for the build system "CMake".
 #
@@ -9,13 +11,15 @@
 # Distributed under the Boost Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-# Start of include guard.
+# ------------------------------------------------------------------------------
+# Include guard.
+# ------------------------------------------------------------------------------
+
 if(florianwolters_set_common_variables_included)
   return()
 endif()
 
-set(florianwolters_set_common_variables_included TRUE)
-# End of include guard.
+set(florianwolters_set_common_variables_included 1)
 
 # ------------------------------------------------------------------------------
 # Set variables related to Coding style.
@@ -41,7 +45,6 @@ set(PROJECT_SOURCE_FILE_SUFFIX_LIST ${PROJECT_DECLARATION_FILE_SUFFIX}
 
 set(PROJECT_ARCHIVE_DIR_NAME "lib" CACHE INTERNAL "PROJECT_ARCHIVE_DIR_NAME")
 set(PROJECT_BUILD_DIR_NAME "build" CACHE INTERNAL "PROJECT_BUILD_DIR_NAME")
-set(PROJECT_CMAKE_DIR_NAME "cmake" CACHE INTERNAL "PROJECT_CMAKE_DIR_NAME")
 set(PROJECT_CONFIG_DIR_NAME "config" CACHE INTERNAL "PROJECT_CONFIG_DIR_NAME")
 set(PROJECT_DOCUMENT_DIR_NAME "doc" CACHE INTERNAL "PROJECT_DOCUMENT_DIR_NAME")
 set(PROJECT_DECLARATION_DIR_NAME "include" CACHE INTERNAL "PROJECT_DECLARATION_DIR_NAME")
@@ -57,7 +60,7 @@ set(PROJECT_TEST_DIR_NAME "test" CACHE INTERNAL "PROJECT_TEST_DIR_NAME")
 # Set variables related to source (input) directories.
 # ------------------------------------------------------------------------------
 
-set(PROJECT_CMAKE_SOURCE_DIR "${PROJECT_SOURCE_DIR}/${PROJECT_CMAKE_DIR_NAME}" CACHE INTERNAL "PROJECT_CMAKE_SOURCE_DIR")
+set(PROJECT_CMAKE_SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR} CACHE INTERNAL "PROJECT_CMAKE_SOURCE_DIR")
 set(PROJECT_CMAKE_INCLUDES_SOURCE_DIR "${PROJECT_CMAKE_SOURCE_DIR}/Includes" CACHE INTERNAL "PROJECT_CMAKE_INCLUDES_SOURCE_DIR")
 set(PROJECT_CMAKE_MODULES_SOURCE_DIR "${PROJECT_CMAKE_SOURCE_DIR}/Modules" CACHE INTERNAL "PROJECT_CMAKE_MODULES_SOURCE_DIR")
 set(PROJECT_CMAKE_TEMPLATES_SOURCE_DIR "${PROJECT_CMAKE_SOURCE_DIR}/Templates" CACHE INTERNAL "PROJECT_CMAKE_TEMPLATES_SOURCE_DIR")
