@@ -1,4 +1,6 @@
-# CMake.cmake
+#.rst:
+# CMake
+# -----
 #
 # Unsorted macros and functions for the build system "CMake".
 #
@@ -9,11 +11,19 @@
 # Distributed under the Boost Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
+# ------------------------------------------------------------------------------
+# Include guard.
+# ------------------------------------------------------------------------------
+
 if(florianwolters_cmake_included)
   return()
 endif()
 
-set(florianwolters_cmake_included TRUE)
+set(florianwolters_cmake_included 1)
+
+function(add_check_target)
+  add_custom_target("check" COMMAND ${CMAKE_CTEST_COMMAND})
+endfunction()
 
 # Disallows in-source builds in favor of out-of-source builds.
 function(assert_out_of_source_build)
