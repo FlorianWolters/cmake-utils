@@ -1,6 +1,8 @@
-# Debug.cmake
+#.rst:
+# Debug
+# -----
 #
-# Debugging macros and functions for the build system "CMake".
+# Debugging functions for the build system "CMake".
 #
 # Author: Florian Wolters <wolters.fl@gmail.com>
 #
@@ -16,9 +18,10 @@
 if(florianwolters_debug_included)
   return()
 endif()
+
 set(florianwolters_debug_included 1)
 
-function(WriteCMakeLocationVariablesToStandardOutput)
+function(debug_cmake_location_variables)
   message(STATUS "CMAKE_CURRENT_LIST_FILE  = ${CMAKE_CURRENT_LIST_FILE}")
   message(STATUS "CMAKE_CURRENT_LIST_DIR = ${CMAKE_CURRENT_LIST_DIR}")
   message(STATUS "CMAKE_CURRENT_LIST_LINE = ${CMAKE_CURRENT_LIST_LINE}")
@@ -38,7 +41,7 @@ function(WriteCMakeLocationVariablesToStandardOutput)
   message(STATUS "PROJECT_BINARY_DIR = ${PROJECT_BINARY_DIR}")
 endfunction()
 
-function(WriteCMakeSystemAndCompilerInformationVariablesToStandardOutput)
+function(debug_cmake_system_and_compiler_information_variables)
   message(STATUS "CMAKE_MAJOR_VERSION = ${CMAKE_MAJOR_VERSION}")
   message(STATUS "CMAKE_MINOR_VERSION = ${CMAKE_MINOR_VERSION}")
   message(STATUS "CMAKE_PATCH_VERSION = ${CMAKE_PATCH_VERSION}")
@@ -72,7 +75,7 @@ function(WriteCMakeSystemAndCompilerInformationVariablesToStandardOutput)
   message(STATUS "CMAKE_COMPILER_IS_GNUCXX = ${CMAKE_COMPILER_IS_GNUCXX}")
 endfunction()
 
-function(WriteCMakeVariousOptionsVariablesToStandardOutput)
+function(debug_cmake_various_options_variables)
   message(STATUS "CMAKE_SKIP_RULE_DEPENDENCY = ${CMAKE_SKIP_RULE_DEPENDENCY}")
   message(STATUS "CMAKE_SKIP_INSTALL_ALL_DEPENDENCY = ${CMAKE_SKIP_INSTALL_ALL_DEPENDENCY}")
   message(STATUS "CMAKE_SKIP_RPATH = ${CMAKE_SKIP_RPATH}")
@@ -88,7 +91,7 @@ function(WriteCMakeVariousOptionsVariablesToStandardOutput)
   message(STATUS "CMAKE_SKIP_RULE_DEPENDENCY = ${CMAKE_SKIP_RULE_DEPENDENCY}")
 endfunction()
 
-function(WriteBiicodeBlockVariablesToStandardOutput)
+function(debug_biicode_block_variables)
   message(STATUS "BII_BLOCK_NAME = ${BII_BLOCK_NAME}")
   message(STATUS "BII_BLOCK_USER = ${BII_BLOCK_USER}")
   message(STATUS "BII_LIB_SRC = ${BII_LIB_SRC}")
@@ -97,7 +100,7 @@ function(WriteBiicodeBlockVariablesToStandardOutput)
   message(STATUS "BII_LIB_SYSTEM_HEADERS = ${BII_LIB_SYSTEM_HEADERS}")
 endfunction()
 
-function(WriteBiicodeTargetsVariablesToStandardOutput)
+function(debug_biicode_targets_variables)
   message(STATUS "BII_BLOCK_TARGET = ${BII_BLOCK_TARGET}")
   message(STATUS "BII_LIB_TARGET = ${BII_LIB_TARGET}")
   message(STATUS "BII_BLOCK_TARGETS = ${BII_BLOCK_TARGETS}")
