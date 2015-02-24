@@ -1,12 +1,14 @@
-# FindGoogleCpplint.cmake
+#.rst:
+# FindGoogleCpplint
+# -----------------
 #
 # Finds the style checker "Google cpplint" with the build system "CMake".
 #
 # Cache Variable:
-#  CPPLINT_SCRIPT
+#  GOOGLE_CPPLINT_SCRIPT
 #
 # Non-cache variables you might use in your CMakeLists.txt:
-#  CPPLINT_FOUND
+#  GOOGLE_CPPLINT_FOUND
 #  CPPLINT_ROOT_DIR
 #  CPPLINT_DEFAULT_LOCATIONS
 #  CPPLINT_NOT_FOUND_MSG
@@ -54,13 +56,13 @@ set(CPPLINT_ROOT_DIR
     PATH
     "Path to search for cpplint")
 
-if(CPPLINT_SCRIPT AND NOT EXISTS "${CPPLINT_SCRIPT}")
-  set(CPPLINT_SCRIPT NOTFOUND CACHE PATH "" FORCE)
+if(GOOGLE_CPPLINT_SCRIPT AND NOT EXISTS "${GOOGLE_CPPLINT_SCRIPT}")
+  set(GOOGLE_CPPLINT_SCRIPT NOTFOUND CACHE PATH "" FORCE)
 endif()
 
 # If we have a custom path, look there first.
 if(CPPLINT_ROOT_DIR)
-  find_file(CPPLINT_SCRIPT
+  find_file(GOOGLE_CPPLINT_SCRIPT
             NAMES "cpplint.py"
             PATHS ${CPPLINT_ROOT_DIR}
             NO_DEFAULT_PATH)
@@ -71,7 +73,7 @@ set(CPPLINT_SCRIPT_DEFAULT_LOCATIONS
     "${CMAKE_SOURCE_DIR}/cmake"
     "${CMAKE_SOURCE_DIR}/cmake/deps")
 
-find_file(CPPLINT_SCRIPT
+find_file(GOOGLE_CPPLINT_SCRIPT
   NAMES cpplint.py
   PATHS ${CPPLINT_SCRIPT_DEFAULT_LOCATIONS})
 
@@ -89,14 +91,16 @@ endif()
 
 include(FindPackageHandleStandardArgs)
 
-find_package_handle_standard_args(cpplint "${CPPLINT_NOT_FOUND_MSG}" PYTHONINTERP_FOUND PYTHONLIBS_FOUND CPPLINT_SCRIPT)
+find_package_handle_standard_args(cpplint
+                                  ${CPPLINT_NOT_FOUND_MSG}
+                                  PYTHONINTERP_FOUND PYTHONLIBS_FOUND GOOGLE_CPPLINT_SCRIPT)
 
-if(CPPLINT_FOUND OR CPPLINT_MARK_AS_ADVANCED)
+if(GOOGLE_CPPLINT_FOUND OR CPPLINT_MARK_AS_ADVANCED)
   mark_as_advanced(CPPLINT_ROOT_DIR)
 endif()
 
-mark_as_advanced(CPPLINT_SCRIPT)
+mark_as_advanced(GOOGLE_CPPLINT_SCRIPT)
 
-if(CPPLINT_FOUND AND NOT CPPLINT_FIND_QUIETLY)
-  message(STATUS "Found cpplint in ${CPPLINT_SCRIPT}")
+if(GOOGLE_CPPLINT_FOUND AND NOT CPPLINT_FIND_QUIETLY)
+  message(STATUS "Found cpplint in ${GOOGLE_CPPLINT_SCRIPT}")
 endif()
